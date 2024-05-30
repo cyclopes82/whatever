@@ -1,0 +1,8 @@
+1. If you get ResourceExceededError in Sagemaker
+2. Go to Service Quotas - Sagemaker, View Quotas
+3. Search for an instance that you want to use - 
+Say ml.m5.xlarge, Look for training usage only
+ml.m5.xlarge for training job usage
+4. Select and Request for increase at your account level - Orange Button
+5. Go to Quota Request History and look for approvals
+6. Use that in your training job
