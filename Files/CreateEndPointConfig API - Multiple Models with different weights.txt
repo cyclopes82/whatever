@@ -1,0 +1,16 @@
+CreateEndPointConfig API
+'EndPointConfigName':'MultipleModels',
+ProductionVariants=[
+{
+	InitialInstanceCount: 1,
+	Model_Name: ModelA --Old Model
+	InstanceType: 'ml.m5.xlarge'
+	InitalVariantWeight:3
+},
+{
+	InitialInstanceCount: 1,
+	Model_Name: ModelB --Refined Model, Fine Tuned
+	InstanceType: 'ml.m5.xlarge'
+	InitalVariantWeight:1
+}
+]
