@@ -83,3 +83,68 @@ Focus: BI metrics are typically aggregated and focus on business KPIs, while fea
 Usage: BI metrics are consumed by business analysts and executives for decision-making, whereas feature store metrics are used by data scientists and ML engineers to improve model performance and reliability.
 Tools and Techniques: BI often uses tools like Tableau, Power BI, and Looker, which are geared towards business reporting. Feature stores use tools like Feast, Tecton, or custom solutions, which are integrated with ML pipelines and focus on feature management.
 In summary, calculation metrics in BI are designed to provide business insights and track performance, focusing on aggregation and summarization. In contrast, metrics in a feature store are designed to ensure the quality and reliability of features for machine learning, focusing on statistical properties and consistency across training and serving environments.
+----------
+Data Science Pipeline Architecture without Semantic Layer
+   +------------------+      +------------------+      +------------------+
+   |  Raw Data Sources|----->|  Data Ingestion  |----->|  Data Lake/Warehouse|
+   +------------------+      +------------------+      +------------------+
+                                    |
+                                    v
+   +------------------+      +------------------+      +------------------+
+   |Data Preparation  |----->|  Feature          |----->| Model Training   |
+   |  (ETL/ELT)       |      |  Engineering      |      +------------------+
+   +------------------+      +------------------+              |
+                                    |                          v
+                                    v                  +------------------+
+                            +------------------+       |  Model Evaluation |
+                            | Model Deployment |<------|  & Validation     |
+                            +------------------+       +------------------+
+                                    |
+                                    v
+   +------------------+      +------------------+
+   |   Model Serving  |----->|  Business        |
+   +------------------+      |  Applications    |
+                             +------------------+
+---------------------------------------------------------------------
+Data Science Pipeline Architecture with Semantic Layer
+   +------------------+      +------------------+      +------------------+
+   |  Raw Data Sources|----->|  Data Ingestion  |----->|  Data Lake/Warehouse|
+   +------------------+      +------------------+      +------------------+
+                                    |
+                                    v
+                            +------------------+
+                            |  Semantic Layer  |
+                            |(Data Modeling,   |
+                            | Business Logic,  |
+                            | Data Abstraction)|
+                            +------------------+
+                                    |
+                                    v
+   +------------------+      +------------------+      +------------------+
+   |Data Preparation  |<---->|  Feature         |<---->| Model Training   |
+   |  (ETL/ELT)       |      |  Engineering     |      +------------------+
+   +------------------+      +------------------+              |
+                                    |                          v
+                                    v                  +------------------+
+                            +------------------+       |  Model Evaluation |
+                            | Model Deployment |<------|  & Validation     |
+                            +------------------+       +------------------+
+                                    |
+                                    v
+   +------------------+      +------------------+
+   |   Model Serving  |----->|  Business        |
+   +------------------+      |  Applications    |
+                             +------------------+
+                                    |
+                                    v
+                             +------------------+
+                             |  Semantic Layer  |
+                             |(Metrics, KPIs,   |
+                             | Governance,      |
+                             | Access Control)  |
+                             +------------------+
+                                    |
+                                    v
+   +------------------+
+   |  Business Users  |
+   +------------------+
